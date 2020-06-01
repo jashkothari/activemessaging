@@ -15,7 +15,6 @@ module ActiveMessaging
           @retryMax = cfg[:retryMax] || 0
           @deadLetterQueue = cfg[:deadLetterQueue] || nil
           @deadLetterQueuePrefix = cfg[:deadLetterQueuePrefix] || nil
-        
           cfg[:login] ||= ""
           cfg[:passcode] ||= ""
           cfg[:host] ||= "localhost"
@@ -30,6 +29,7 @@ module ActiveMessaging
           # create a new stomp connection
           connect_headers = cfg[:connect_headers] || {}
           connect_headers['client-id'] = cfg[:clientId] if cfg[:clientId]
+          connect_headers['activemq.prefetchSize'] = cfg[:prefetchSize] if cfg[:prefetchSize]
           @stomp_connection = ::Stomp::Connection.new(cfg[:login],cfg[:passcode],cfg[:host],cfg[:port].to_i,cfg[:reliable],cfg[:reconnectDelay], connect_headers)
         end
         
