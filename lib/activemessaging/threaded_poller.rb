@@ -215,7 +215,7 @@ module ActiveMessaging
         ::ActiveRecord::Base.clear_active_connections! if defined?(::ActiveRecord)
       end
 
-      poller.executed!(current_actor)
+      poller.executed(current_actor)
     end
 
     def inspect
