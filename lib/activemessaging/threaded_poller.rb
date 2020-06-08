@@ -172,7 +172,7 @@ module ActiveMessaging
 
       if message
         logger.debug("ActiveMessaging::MessageReceiver.receive: message:'#{message.inspect}'")
-        poller.dispatch!(message, worker)
+        poller.dispatch(message, worker)
       else
         if (!poller || !poller.alive? || !poller.running)
           logger.debug("ActiveMessaging::MessageReceiver.receive: terminate")
