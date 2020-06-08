@@ -91,7 +91,7 @@ module ActiveMessaging
     end
 
     def receive(worker)
-      receiver.receive!(worker) if (receiver && running && worker)
+      receiver.receive(worker) if (receiver && running && worker)
     end
 
     def dispatch(message, worker)
