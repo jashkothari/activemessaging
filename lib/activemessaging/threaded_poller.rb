@@ -97,7 +97,7 @@ module ActiveMessaging
     def dispatch(message, worker)
       workers.delete(worker)
       busy << worker
-      worker.execute!(message)
+      worker.execute(message)
     end
 
     def executed(worker)
